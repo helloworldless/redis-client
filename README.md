@@ -2,7 +2,7 @@
 
 ## Usage
 ```
-private RedisForJava redis = RedisForJavaFactory.newRedisClient(new JedisWrapper(new Jedis));
+private RedisForJava redis = RedisForJavaFactory.newRedisClient(new JedisWrapper(new Jedis()));
 ```
 
 ## Notes
