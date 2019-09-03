@@ -1,24 +1,22 @@
 package com.davidagood.redis;
 
 import org.junit.Test;
-import redis.embedded.RedisServer;
+import org.rarefiedredis.redis.RedisMock;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.davidagood.redis.RedisImpl.STATUS_SUCCESS;
-import static org.junit.Assert.*;
+import static com.davidagood.redis.RedisForJavaImpl.STATUS_SUCCESS;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-public class RedisImplTest {
+public class RedisForJavaImplTest {
 
-    private RedisImpl redis = new RedisImpl();
+    private final RedisForJavaImpl redis = new RedisForJavaImpl(new RedisMockWrapper(new RedisMock()));
 
     @Test
-    public void integrationTest() throws IOException {
-        RedisServer redisServer = new RedisServer(6379);
-        redisServer.start();
-
+    public void integrationTest() {
         String hashPerson = "person";
         String sally = "Sally";
         String sallycita = "Sallycita";
@@ -35,8 +33,6 @@ public class RedisImplTest {
         expectedPersonFields.put(fieldName, sally);
         expectedPersonFields.put(fieldNickname, sallycita);
         assertEquals(expectedPersonFields, personFields);
-
-        redisServer.stop();
     }
 
     @Test

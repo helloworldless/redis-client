@@ -1,5 +1,10 @@
 # Redis Client
 
+## Usage
+```
+private RedisForJava redis = RedisForJavaFactory.newRedisClient(new JedisWrapper(new Jedis));
+```
+
 ## Notes
 
 ### Redis Server

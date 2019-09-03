@@ -17,7 +17,7 @@ dependencies {
     implementation 'redis.clients:jedis:3.1.0'
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'com.github.kstyrc:embedded-redis:0.6'
+    testImplementation 'org.rarefiedredis.redis:redis-java:0.0.17'
 }
 
 publishing {

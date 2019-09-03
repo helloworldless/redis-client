@@ -1,25 +1,27 @@
 package com.davidagood.redis;
 
-import redis.clients.jedis.Jedis;
-
 import java.util.Map;
 
-class RedisImpl implements Redis {
+class RedisForJavaImpl implements RedisForJava {
 
     static final Long STATUS_SUCCESS = 0L;
 
-    private Jedis jedis = new Jedis();
+    private final Redis redis;
+
+    RedisForJavaImpl(Redis redis) {
+        this.redis = redis;
+    }
 
     public String getHashField(String key, String field) {
-        return jedis.hget(key, field);
+        return redis.hget(key, field);
     }
 
     public Map<String, String> getHashFields(String key) {
-        return jedis.hgetAll(key);
+        return redis.hgetAll(key);
     }
 
     public boolean setHashField(String key, String field, String value) {
-        return isSuccessful(jedis.hset(key, field, value));
+        return isSuccessful(redis.hset(key, field, value));
     }
 
     boolean isSuccessful(Long status) {

@@ -3,9 +3,9 @@ package com.davidagood.redis;
 import java.util.Map;
 
 public interface Redis {
-    String getHashField(String key, String field);
+    String hget(String key, String field);
 
-    Map<String, String> getHashFields(String key);
+    Map<String, String> hgetAll(String key);
 
-    boolean setHashField(String key, String field, String value);
+    Long hset(String key, String field, String value);
 }
