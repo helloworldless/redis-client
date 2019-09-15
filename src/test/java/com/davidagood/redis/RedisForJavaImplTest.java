@@ -6,10 +6,7 @@ import org.rarefiedredis.redis.RedisMock;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.davidagood.redis.RedisForJavaImpl.STATUS_SUCCESS;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class RedisForJavaImplTest {
 
@@ -33,13 +30,10 @@ public class RedisForJavaImplTest {
         expectedPersonFields.put(fieldName, sally);
         expectedPersonFields.put(fieldNickname, sallycita);
         assertEquals(expectedPersonFields, personFields);
-    }
 
-    @Test
-    public void isSuccessful() {
-        assertFalse(redis.isSuccessful(null));
-        assertFalse(redis.isSuccessful(1L));
-        assertTrue(redis.isSuccessful(STATUS_SUCCESS));
+        redis.deleteHashField(hashPerson, fieldNickname);
+        expectedPersonFields.remove(fieldNickname);
+        assertEquals(expectedPersonFields, redis.getHashFields(hashPerson));
     }
 
 }

@@ -25,4 +25,10 @@ public class JedisWrapper implements Redis {
     public Long hset(String key, String field, String value) {
         return jedis.hset(key, field, value);
     }
+
+    @Override
+    public Long hdel(String key, String field) {
+        return jedis.hdel(key, field);
+    }
+
 }

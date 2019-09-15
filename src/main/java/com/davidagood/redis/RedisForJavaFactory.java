@@ -7,4 +7,5 @@ public class RedisForJavaFactory {
     public static RedisForJava newRedisClient(Redis redis) {
         return new RedisForJavaImpl(redis);
     }
+
 }

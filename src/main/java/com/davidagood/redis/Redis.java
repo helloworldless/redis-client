@@ -8,4 +8,6 @@ public interface Redis {
     Map<String, String> hgetAll(String key);
 
     Long hset(String key, String field, String value);
+
+    Long hdel(String key, String field);
 }

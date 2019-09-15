@@ -39,4 +39,13 @@ public class RedisMockWrapper implements Redis {
         }
     }
 
+    @Override
+    public Long hdel(String key, String field) {
+        try {
+            return redisMock.hdel(key, field);
+        } catch (WrongTypeException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

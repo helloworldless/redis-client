@@ -7,5 +7,7 @@ public interface RedisForJava {
 
     Map<String, String> getHashFields(String key);
 
-    boolean setHashField(String key, String field, String value);
+    CommandResult setHashField(String key, String field, String value);
+
+    CommandResult deleteHashField(String key, String field);
 }
